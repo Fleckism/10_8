@@ -8,19 +8,41 @@ Randomly select one of the above, then give a friend or foe signal then a random
 
 
 #include <iostream>
+#include <cstdlib>
+#include <time.h> // for rand()
+
+
+
+using namespace std;
+
+const string color[6] = { "red", "blue", "green", "orange", "yellow", "brown" };
+const int distance[5] = { 7,25,20,10,15 };
+
+void random_function()
+{
+    // you must assign your variables each time
+    int rand_num = rand();
+    int rand_color = rand() % 6; // should output color
+    int rand_distance = rand() % 5; // should output distance
+
+    if (rand_num % 2)
+    {
+        cout << color[rand_color] << endl;  // output also a space so make it readable
+                                           // the :: before distance is needed because
+                                           // distance is member of the std namespace
+                                           // and you have using namespace std;
+    }
+    else
+    {
+        cout << ::distance[rand_distance] << endl;   // output also a space so make it readable
+    }
+}
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    for (int i = 1; i < 30; i++)
+    {
+        random_function();
+    }
+    return 0;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
