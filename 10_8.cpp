@@ -11,6 +11,9 @@ Randomly select one of the above, then give a friend or foe signal then a random
 #include <cstdlib>
 #include <time.h> // for rand()
 
+#include<thread> // for sleep()
+#include<chrono>// chrono::seconds
+
 
 
 using namespace std;
@@ -43,6 +46,9 @@ int main()
     for (int i = 1; i < 30; i++)
     {
         random_function();
+        
+        this_thread::sleep_for(chrono::seconds(5));
+
     }
     return 0;
 }
